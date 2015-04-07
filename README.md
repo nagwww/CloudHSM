@@ -1,4 +1,7 @@
 # What is CloudHSM  
+
+<img src="/images/elephant_new.jpg" width="800" height="500" />
+
  CloudHSM is one of the many services from Amazon ( AWS )
  If you are familar with HSM it is a HSM sitting in the Amazon Data center.
  Yes these are not Virtualized and these are Physical devices sitting in Amazon Data centers.

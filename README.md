@@ -22,21 +22,37 @@ Bottom line a key never leaves the HSM.
 
 ## Getting started with CloudHSM
 - Provisioning a new CloudHSM
+-- Historical Info : In good old days you would open a ticket with Amazon with your VPC info/Region/subnet  and they would provision the HSM.
+
+-- Auto provisoning using boto
+--- AWS Charges an upfront fee of $5000.00 ( Please check the http://aws.amazon.com/cloudhsm/faqs/ for the exact amount ) when provisioning
+--- You need the following to provision a CloudHSM
+---- Region
+---- Subnet
+---- ssh key pair
 
 
-## Functional Concepts and benefits
-- Can be used for Secure Key Storage
-### Compliance
- PCI 3.0
-
-## How to monitor CloudHSM
+When a HSM is provisioned all you see is a ENI in the AWS Console, which looks like
+-- 
 
 ## Operationalize CloudHSM
-### How to Mornitor a CloudHSM
-### How to backup a CloudHSM
-### 
+### How to monitor CloudHSM
+- Using SNMP
+-- Create an SNMP user on the CloudHSM as
 
-## Good References 
 
-## Automating CloudHSM
-### 
+- Using Syslogs
+-- Add a remo
+
+### CloudHSM Inventory
+- It is common for orgs to have CloudHSM in different regions/environments/subnets
+- Here is a quick script i use to get the CloudHSM Invntories across all the accounts/regions
+
+
+## How to backup a CloudHSM
+- Do you know CloudHSM can only be backed up to a CloudHSM Backup. This how a CloudHSM Backup looks like. 
+- The one thing you cannot have it in the cloud as they need to be physically connect to a server/instance
+- Obviosuly as the keys are sensitive you would want to have them backed up to the CloudHSM
+
+## How to restore a CloudHSM Backup
+- As important a backup is, it is equally important to test your restoures to ensure it works end to end.

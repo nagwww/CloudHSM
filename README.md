@@ -40,6 +40,19 @@ When a HSM is provisioned all you see is a ENI in the AWS Console, which looks l
 - Using SNMP
 -- Create an SNMP user on the CloudHSM as
 
+```
+ lunadsh*> sysconf snmp user add -s atlas -authPa <**********> -authProtocol SHA -privPa <**********> -privPr AES
+```
+-- Re-start SNMP as
+```
+ lunash*> service restart snmp
+```
+Note
+-- Sometime SNMP is is not enabled by default on the HSM's. To enable SNMP
+```
+ lunash*> sysconf snmp enable
+```
+
 
 - Using Syslogs
 -- Add a remo

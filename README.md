@@ -35,27 +35,41 @@ Bottom line a key never leaves the HSM.
 When a HSM is provisioned all you see is a ENI in the AWS Console, which looks like
 -- 
 
-## Operationalize CloudHSM
-### How to monitor CloudHSM
-- Using SNMP
--- Create an SNMP user on the CloudHSM as
+## How to monitor CloudHSM
+###  Using SNMP
+-- Create an SNMP user on CloudHSM as
 
 ```
- lunash*> sysconf snmp user add -s monitohsm -authPa <**********> -authProtocol SHA -privPa <**********> -privPr AES
+ lunash*> sysconf snmp user add -s monitorhsm -authPa <**********> -authProtocol SHA -privPa <**********> -privPr AES
 ```
 -- Re-start SNMP as
 ```
  lunash*> service restart snmp
 ```
 Note
--- Sometime SNMP is is not enabled by default on the HSM's. To enable SNMP
+-- Sometimes SNMP is is not enabled by default on the HSM's. To enable SNMP
 ```
  lunash*> sysconf snmp enable
 ```
 
+-- Perofrm a quick test to ensure you are able to get to SNMP as
+```
+ snmpget -v3 -u monitorhsm -l authPriv -a SHA -A ******* -x AES -X ****** 10.12.12.23 1.3.6.1.2.1.2.2.1.10.2
 
-- Using Syslogs
--- Add a remo
+```
+
+### Using CloudHSM syslogs
+
+- While provisining a new CloudHSM you can provide the IP of a rsyslog server so cloudHSM can forward the syslogs.
+- To add a rsyslog server 
+```
+import boto
+
+
+```
+
+## Alerting on CloudHSM
+
 
 ### CloudHSM Inventory
 - It is common for orgs to have CloudHSM in different regions/environments/subnets

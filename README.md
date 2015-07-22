@@ -62,9 +62,10 @@ Note
 import boto
 
 
-```
 - Setting up a rsyslog server on Ubuntu ( Install the latest version )
--- ``` sudo add-apt-repository ppa:adiscon/v8-stable
+
+```
+       sudo add-apt-repository ppa:adiscon/v8-stable
        sudo apt-get update
        sudo apt-get install rsyslog
 ```

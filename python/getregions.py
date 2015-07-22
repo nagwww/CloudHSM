@@ -7,7 +7,7 @@
 """
 
 import boto
-from boto.s3.connection import Location
+from boto.cloudhsm.connection import Location
 
 def getregions():
     for region in dir(Location):

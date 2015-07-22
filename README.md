@@ -23,17 +23,13 @@ Bottom line a key never leaves the HSM.
 ## Getting started with CloudHSM
 - Provisioning a new CloudHSM
 -- Historical Info : In good old days you would open a ticket with Amazon with your VPC info/Region/subnet  and they would provision the HSM.
-
 -- Auto provisoning using boto
 --- AWS Charges an upfront fee of $5000.00 ( Please check the http://aws.amazon.com/cloudhsm/faqs/ for the exact amount ) when provisioning
 --- You need the following to provision a CloudHSM
 ---- Region
 ---- Subnet
 ---- ssh key pair
-
-
 When a HSM is provisioned all you see is a ENI in the AWS Console, which looks like
--- 
 
 ## How to monitor CloudHSM
 ###  Using SNMP
@@ -58,15 +54,22 @@ Note
 
 ```
 
-### Using CloudHSM syslogs
+### Setting up remove logging for  CloudHSM using rsyslogs
 
+- As the CloudHSM is provisoned in the VPC, your rsyslog instance also needs to be in the VPC.
 - While provisining a new CloudHSM you can provide the IP of a rsyslog server so cloudHSM can forward the syslogs.
-- To add a rsyslog server 
 ```
 import boto
 
 
 ```
+- Setting up a rsyslog server on Ubuntu ( Install the latest version )
+-- ``` sudo add-apt-repository ppa:adiscon/v8-stable
+       sudo apt-get update
+       sudo apt-get install rsyslog
+```
+
+- Using logstash to Ingest rsyslog to ElasticSearch
 
 ## Alerting on CloudHSM
 
@@ -78,6 +81,8 @@ import boto
 
 ## How to backup a CloudHSM
 - Do you know CloudHSM can only be backed up to a CloudHSM Backup. This how a CloudHSM Backup looks like. 
+ <img src="/images/hsm1.png" width="300" height="200" />
+ <img src="/images/hsm2.png" width="300" height="200" />
 - The one thing you cannot have it in the cloud as they need to be physically connect to a server/instance
 - Obviosuly as the keys are sensitive you would want to have them backed up to the CloudHSM
 

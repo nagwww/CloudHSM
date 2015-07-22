@@ -60,6 +60,7 @@ Note
 - While provisining a new CloudHSM you can provide the IP of a rsyslog server so cloudHSM can forward the syslogs.
 ```
 import boto
+```
 
 
 - Setting up a rsyslog server on Ubuntu ( Install the latest version )
